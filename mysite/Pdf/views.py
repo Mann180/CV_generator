@@ -27,7 +27,7 @@ def accept_data(request):
             previous_work=previous_work,skills=skills)
         profile.save()
         messages.success(request,'Saved success')
-        return redirect('list') 
+        return redirect('success', id=profile.id) 
     
     return render(request,'pdf/accept_data.html',{'message':messages})
 
@@ -47,6 +47,11 @@ def resume(request,id):
     
     
     return response
+
+
+def success(request, id):
+    profile = Profile.objects.get(pk=id)
+    return render(request, 'pdf/success.html', {'profile': profile})
 
 
 def list(request):

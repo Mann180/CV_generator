@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Resume Created</title>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+    <div class="container mt-5 text-center">
+        <h2 class="mb-4 text-success">🎉 Resume Created Successfully!</h2>
+        <p>Thank you, <strong>{{ profile.name }}</strong>. Your resume is ready to download.</p>
+        <a href="{% url 'resume' profile.id %}" class="btn btn-primary mt-3">
+            ⬇️ Download Your Resume
+        </a>
+        <br><br>
+        <a href="{% url 'accept_data' %}" class="btn btn-secondary">Create Another Resume</a>
+        <a href="{% url 'list' %}" class="btn btn-outline-dark">View All Resumes</a>
+    </div>
+</body>
+</html>

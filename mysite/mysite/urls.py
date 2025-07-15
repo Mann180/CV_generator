@@ -23,4 +23,5 @@ urlpatterns = [
     path('',accept_data,name='accept_data'),
     path('resume/<int:id>/',resume,name='resume'),  
     path('list/',list,name='list'),
+    path('success/<int:id>/', success, name='success'),
 ]
