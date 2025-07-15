@@ -13,5 +13,8 @@ class Profile(models.Model):
     university = models.CharField(max_length=200)
     previous_work = models.TextField()
     skills = models.TextField()
+    
+    def __str__(self) -> str:
+        return self.name
 
     

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reduced Width Form</title>
+    <title>CV Generator</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
@@ -13,8 +13,19 @@
 
     <div class="container mt-5">
         <div class="row justify-content-center">
-            <div class="col-md-6"> <!-- Change this to col-md-4 or col-md-3 for narrower form -->
-                <form>
+            {% if messages %}
+            <div class="col-md-12">
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <div class="col-md-6">
+                <form method="post">
+                    {% csrf_token %}
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" class="form-control" id="name" name="name" placeholder="Name">
@@ -29,7 +40,8 @@
                     </div>
                     <div class="form-group">
                         <label for="summary">Summary</label>
-                        <input type="text" class="form-control" id="summary" name="summary" placeholder="Summary">
+                        <textarea class="form-control" id="summary" name="summary" rows="3"
+                            placeholder="Summary"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="degree">Degree</label>
@@ -41,15 +53,18 @@
                     </div>
                     <div class="form-group">
                         <label for="university">University</label>
-                        <input type="text" class="form-control" id="university" name="university" placeholder="University">
+                        <input type="text" class="form-control" id="university" name="university"
+                            placeholder="University">
                     </div>
                     <div class="form-group">
                         <label for="previous_work">Previous Work</label>
-                        <input type="text" class="form-control" id="previous_work" name="previous_work" placeholder="Previous Work">
+                        <textarea class="form-control" id="previous_work" name="previous_work" rows="3"
+                            placeholder="Previous Work"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="skills">Skills</label>
-                        <input type="text" class="form-control" id="skills" name="skills" placeholder="Skills">
+                        <textarea class="form-control" id="skills" name="skills" rows="3"
+                            placeholder="Skills"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary btn-block">Submit</button>
                 </form>
