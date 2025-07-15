@@ -1,26 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cv</title>
+    <title>CV - {{ user_profile.name }}</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 40px;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            border-bottom: 2px solid #343a40;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+
+        .resume-header h2 {
+            margin: 0;
+            font-size: 1.75rem;
+        }
+
+        .resume-header p {
+            margin: 0;
+        }
+
+        .resume-section {
+            margin-bottom: 30px;
+        }
+    </style>
 </head>
+
 <body>
-    <h2>{{user_profile.name}}</h2>
-    <h2>{{user_profile.email}}</h2>
-    <h2>{{user_profile.phone}}</h2>
-    <hr>
-    <br>
-    <p>Summary</p>
-    <p>{{user_profile.summary}}</p>
-    <p>Skills</p>
-    <p>{{user_profile.skills}}</p>
-    <p>Education</p>
-    <ul>
-        <li>{{user_profile.school}}</li>
-        <li>{{user_profile.university}}</li>
-    </ul>
+    <div class="container bg-white p-5 shadow rounded">
+        <!-- Header -->
+        <div class="resume-header text-center mb-4">
+            <h2>{{ user_profile.name }}</h2>
+            <p><strong>Email:</strong> {{ user_profile.email }}</p>
+            <p><strong>Phone:</strong> {{ user_profile.phone }}</p>
+        </div>
+        <hr>
+
+        <!-- Summary -->
+        <div class="resume-section">
+            <div class="section-title">Summary</div>
+            <p>{{ user_profile.summary }}</p>
+        </div>
+
+        <!-- Skills -->
+        <div class="resume-section">
+            <div class="section-title">Skills</div>
+            <p>{{ user_profile.skills }}</p>
+        </div>
+
+        <!-- Education -->
+        <div class="resume-section">
+            <div class="section-title">Education</div>
+            <ul class="list-unstyled ml-3">
+                <li><strong>School:</strong> {{ user_profile.school }}</li>
+                <li><strong>University:</strong> {{ user_profile.university }}</li>
+                <li><strong>Degree:</strong> {{ user_profile.degree }}</li>
+
+            </ul>
+        </div>
+
+        <!-- Previous works -->
+        <!-- Skills -->
+        <div class="resume-section">
+            <div class="section-title">Previous work</div>
+            <p>{{ user_profile.previous_work }}</p>
+        </div>
+
+    </div>
 </body>
+
 </html>

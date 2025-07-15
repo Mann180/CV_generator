@@ -24,7 +24,7 @@ def accept_data(request):
         profile = Profile(name=name,email=email,phone=phone,summary=summary,degree=degree,school=school,university=university,previous_work=previous_work,skills=skills)
         profile.save()
         messages.success(request,'Saved success')
-        return redirect('resume')
+        return redirect('list') 
     
     return render(request,'pdf/accept_data.html',{'message':messages})
 
@@ -40,7 +40,12 @@ def resume(request,id):
     }
     pdf = pdfkit.from_string(html,False,options)
     response = HttpResponse(pdf,content_type = 'application/pdf')
-    response['Content-Disposition'] = 'attachment'
-    filename = "resume.pdf"
+    response['Content-Disposition'] = 'attachment; filename="resume.pdf"'
+    
     
     return response
+
+
+def list(request):
+    profiles = Profile.objects.all()
+    return render(request,'pdf/list.html',{'profiles':profiles})
